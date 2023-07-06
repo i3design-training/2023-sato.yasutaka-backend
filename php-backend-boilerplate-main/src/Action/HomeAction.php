@@ -11,7 +11,7 @@ class HomeAction
 {
     public function __invoke(Request $request, Response $response)
     {
-        $response->getBody()->write('Hello world!');
+        $response->getBody()->write('テスト');
 
         return $response;
     }

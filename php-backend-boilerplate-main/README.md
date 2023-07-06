@@ -19,6 +19,7 @@ Homebrewを用いた環境構築を行う
 ### PHP をインストールする
 ```console:コマンド
 brew install php
+brew install composesr
 ```
 
 #### 確認
