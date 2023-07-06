@@ -15,7 +15,6 @@ $app = AppFactory::create();
 
 $routes = require __DIR__ . '/routes.php';
 $routes($app);
-
 $manager = new Manager();
 $manager->addConnection([
     'driver' => 'pgsql',
