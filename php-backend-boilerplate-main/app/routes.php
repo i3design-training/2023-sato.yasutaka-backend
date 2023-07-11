@@ -8,7 +8,7 @@ use Slim\Routing\RouteCollectorProxy as Group;
 return function (App $app) {
     $app->get('/', \App\Action\HomeAction::class)->setName('home');
     $app->get('/hello/{name}', \App\Action\HelloAction::class)->setName('hello');
-
+    $app->post('/send-email',  \App\Action\SendEmailAction::class);
     $app->group('/api', function (Group $group) {
         $group->get('/users', \App\Action\UserListAction::class)->setName('users');
         $group->get('/users/{id}', \App\Action\UserReadAction::class)->setName('user');
