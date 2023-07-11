@@ -15,8 +15,9 @@ $app = AppFactory::create();
 
 $routes = require __DIR__ . '/routes.php';
 $routes($app);
-$manager = new Manager();
-$manager->addConnection([
+
+$capsule = new Manager();
+$capsule->addConnection([
     'driver' => 'pgsql',
     'host' => getenv('DB_HOST') ?: 'localhost',
     'port' => getenv('DB_PORT') ?: 5432,
@@ -25,6 +26,6 @@ $manager->addConnection([
     'password' => getenv('DB_PASSWORD') ?: 'todo',
     'prefix' => '',
 ]);
-$manager->bootEloquent();
+$capsule->bootEloquent();
 
 return $app;
