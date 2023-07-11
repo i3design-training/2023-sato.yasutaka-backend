@@ -25,6 +25,7 @@ class UserCreateAction
       $user->password = $password;
       $user->save();
 
+      //これは上手くいかない
       // $user->emailVerification()->create(
       //   [
       //     'token' => bin2hex(random_bytes(16))
@@ -38,8 +39,11 @@ class UserCreateAction
       //   'password' => $password
       // ]);
 
+
       // Email VerificationテーブルにIDとトークンを保存する処理
-      // $user = User::find($request->getQueryParams()['user_id']);
+      //上記で登録したemailに一致する最初のユーザーレコードを取得
+      $user = User::where('email', $email)->first(); 
+
       $emailVerification = new EmailVerifications();
       $verificationToken = bin2hex(random_bytes(16)); // トークンを生成
       $emailVerification->user_id = $user->id;
