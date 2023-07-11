@@ -25,3 +25,21 @@ $container->set('db', function ($container) {
   
   return $pdo;
 });
+
+$container->set('mailer', function ($container) {
+  $mailer = new \PHPMailer\PHPMailer\PHPMailer();
+
+  // SMTP設定
+  $mailer->isSMTP();
+  $mailer->Host = 'smtp.gmail.com';
+  $mailer->Port = 587;
+  $mailer->SMTPSecure = 'tls';
+  $mailer->SMTPAuth = true;
+  $mailer->Username = 'sato.yasutaka@i3design.co.jp'; // Gmailのメールアドレス
+  $mailer->Password = 'Yassan1999'; // Gmailのパスワード
+
+  // 送信元の設定
+  $mailer->setFrom('sato.yasutaka@i3design.co.jp', 'Sato Yasutaka'); // 送信元メールアドレスと名前
+
+  return $mailer;
+});
