@@ -18,8 +18,7 @@ class TokenCheckAction
       "token",
       $frontendToken
     )->first();
-
-    // if ($frontendToken) {
+    
     if ($emailVerification) {
       // トークンが一致した場合
       // usersテーブルのemail_verifiedを更新する処理などを実行する
