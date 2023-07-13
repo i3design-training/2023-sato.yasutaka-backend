@@ -34,10 +34,12 @@ class UserCreateAction
     $emailVerification->save();
 
     //Email送信処理
-    $emailSender = new EmailSendAction;
+    $emailSender = new EmailSendAction();
+    $verificationUrl ="http://localhost:5173/users/complete/verify?token=" . $verificationToken;
     $to = "sato.yasutaka@i3design.co.jp";
     $subject = "Register";
-    $body = "Click: <a href='http://localhost:5173/users/login'>http://localhost:5173/users/login</a>";
+    $body = "クリックしてメールアドレスを確認してください: <a href='{$verificationUrl}'>こちらをクリック</a>";
+
     $emailSender->sendEmail($to, $subject, $body);
 
     // 成功レスポンスを返す
@@ -46,17 +48,16 @@ class UserCreateAction
   }
 }
 
+//これは上手くいかなかった
+// $user->emailVerification()->create(
+//   [
+//     'token' => bin2hex(random_bytes(16))
+//   ]
+//   );
+// $emailVerification = $user->emailVerification();
 
-    //これは上手くいかなかった
-    // $user->emailVerification()->create(
-    //   [
-    //     'token' => bin2hex(random_bytes(16))
-    //   ]
-    //   );
-    // $emailVerification = $user->emailVerification();
-
-    // $user = User::create([
-    //   'username' => $username,
-    //   'email' => $email,
-    //   'password' => $password
-    // ]);
+// $user = User::create([
+//   'username' => $username,
+//   'email' => $email,
+//   'password' => $password
+// ]);
