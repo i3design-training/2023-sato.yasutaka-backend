@@ -20,5 +20,6 @@ return function (App $app) {
         $group->put('/users/{id}', \App\Action\UserUpdateAction::class);
         $group->delete('/users/{id}', \App\Action\UserDeleteAction::class);
         $group->post('/users/complete/verify', \App\Action\TokenCheckAction::class)->setName('tokencheck');
+        $group->post('/users/login', \App\Action\LoginCheckAction::class)->setName('logincheck');
     });
 };
